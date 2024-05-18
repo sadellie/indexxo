@@ -1,0 +1,193 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "f1525c2fe42b76690deb9024d86291f7",
+    "entities": [
+      {
+        "tableName": "base_user_preset",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT NOT NULL, `maxThreads` INTEGER NOT NULL, `isDuplicateHashesEnabled` INTEGER NOT NULL, `isDuplicateFileNamesEnabled` INTEGER NOT NULL, `isDuplicateFolderNamesEnabled` INTEGER NOT NULL, `isEmptyFoldersEnabled` INTEGER NOT NULL, `isEmptyFilesEnabled` INTEGER NOT NULL, `isSimilarImagesEnabled` INTEGER NOT NULL, `similarImagesMinSimilarity` REAL NOT NULL, `isSimilarImagesImproveAccuracy` INTEGER NOT NULL, `isSimilarVideosEnabled` INTEGER NOT NULL, `similarVideosMinimalHashSimilarity` REAL NOT NULL, `similarVideosMinimalFrameSimilarity` REAL NOT NULL, `similarVideosFPS` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "maxThreads",
+            "columnName": "maxThreads",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "isDuplicateHashesEnabled",
+            "columnName": "isDuplicateHashesEnabled",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "isDuplicateFileNamesEnabled",
+            "columnName": "isDuplicateFileNamesEnabled",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "isDuplicateFolderNamesEnabled",
+            "columnName": "isDuplicateFolderNamesEnabled",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "isEmptyFoldersEnabled",
+            "columnName": "isEmptyFoldersEnabled",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "isEmptyFilesEnabled",
+            "columnName": "isEmptyFilesEnabled",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "isSimilarImagesEnabled",
+            "columnName": "isSimilarImagesEnabled",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "similarImageMinSimilarity",
+            "columnName": "similarImagesMinSimilarity",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "isSimilarImagesImproveAccuracy",
+            "columnName": "isSimilarImagesImproveAccuracy",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "isSimilarVideosEnabled",
+            "columnName": "isSimilarVideosEnabled",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "similarVideosMinimalHashSimilarity",
+            "columnName": "similarVideosMinimalHashSimilarity",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "similarVideosMinimalFrameSimilarity",
+            "columnName": "similarVideosMinimalFrameSimilarity",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "similarVideosFPS",
+            "columnName": "similarVideosFPS",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        }
+      },
+      {
+        "tableName": "user_preset_path",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `path` TEXT NOT NULL, `isIncluded` INTEGER NOT NULL, `isDirectory` INTEGER NOT NULL, `basePresetId` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "path",
+            "columnName": "path",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "isIncluded",
+            "columnName": "isIncluded",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "isDirectory",
+            "columnName": "isDirectory",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "basePresetId",
+            "columnName": "basePresetId",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        }
+      },
+      {
+        "tableName": "user_preset_extension",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `extension` TEXT NOT NULL, `basePresetId` INTEGER NOT NULL, `isIncluded` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "extension",
+            "columnName": "extension",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "basePresetId",
+            "columnName": "basePresetId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "isIncluded",
+            "columnName": "isIncluded",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        }
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'f1525c2fe42b76690deb9024d86291f7')"
+    ]
+  }
+}

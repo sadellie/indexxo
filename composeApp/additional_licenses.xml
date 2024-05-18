@@ -1,0 +1,41 @@
+<!--
+  ~ Indexxo is file management software.
+  ~ Copyright (c) 2024 Elshan Agaev
+  ~
+  ~ This program is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with this program.  If not, see <https://www.gnu.org/licenses/>.
+  -->
+
+<topic>
+    <chunk>
+        <chapter title="Additional libraries">
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Version</th>
+                    <th>License</th>
+                </tr>
+                <tr>
+                    <td><a href="https://github.com/facebook/ThreatExchange">ThreatExchange (PDQ and VPDQ)</a></td>
+                    <td>Not specified</td>
+                    <td><a href="https://github.com/facebook/ThreatExchange/blob/main/LICENSE">BSD License</a></td>
+                </tr>
+                <tr>
+                    <td><a href="https://github.com/facebook/ThreatExchange">Material Symbols</a></td>
+                    <td>4.0.0</td>
+                    <td><a href="https://github.com/google/material-design-icons/blob/master/LICENSE">Apache License 2.0</a></td>
+                </tr>
+            </table>
+        </chapter>
+    </chunk>
+</topic>

@@ -2,5 +2,11 @@
 build
 .gradle
 .kotlin
-indexxo.properties
 homework
+/composeApp/include/common/**/LICENSE*
+/composeApp/include/common/**/NOTICE*
+/composeApp/include/common/**/README*
+/composeApp/debug
+*.log
+*.lock
+/gradle/wrapper/gradle-*-bin.zip

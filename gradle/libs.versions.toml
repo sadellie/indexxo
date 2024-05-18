@@ -1,0 +1,90 @@
+[versions]
+appVersion = "0.5.0"
+appVersionName = "quick baked potatoes"
+
+# https://github.com/JetBrains/compose-multiplatform/releases
+compose-plugin = "1.6.11"
+# https://github.com/JetBrains/kotlin/releases
+kotlin = "2.0.20"
+# https://github.com/adrielcafe/voyager/releases
+voyager = "1.1.0-beta02"
+# https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-coroutines-swing
+kotlinxSwing = "1.8.1"
+# https://github.com/coil-kt/coil/releases
+coil = "3.0.0-alpha10"
+# https://developer.android.com/jetpack/androidx/releases/room
+androidx-room = "2.7.0-alpha07"
+# https://mvnrepository.com/artifact/androidx.sqlite/sqlite-bundled
+sqlite-bundled = "2.5.0-alpha06"
+# https://github.com/google/ksp/releases
+ksp = "2.0.20-1.0.25"
+# https://github.com/KoalaPlot/koalaplot-core/releases
+koalaplot = "0.6.3"
+# https://github.com/InsertKoinIO/koin/releases
+koin = "3.5.6"
+# https://developer.android.com/jetpack/androidx/releases/datastore
+datastore = "1.1.1"
+# https://github.com/yshrsmz/BuildKonfig/releases
+konfig = "0.15.2"
+# https://github.com/apache/tika/tags
+tika = "2.9.2"
+# https://github.com/touchlab/Kermit/releases
+kermit = "2.0.4"
+# https://github.com/Kotlin/kotlinx.serialization/releases
+kotlinx-serialization = "1.7.2"
+# https://github.com/Kotlin/kotlinx-datetime/releases
+kotlinx-datetime = "0.6.1"
+# https://github.com/vinceglb/FileKit/releases
+filekit = "0.8.2"
+# https://github.com/jk1/Gradle-License-Report/releases
+dependency-license-report = "2.9"
+# https://github.com/MayakaApps/ComposeWindowStyler/releases
+windowStyler = "0.3.3-SNAPSHOT"
+# https://github.com/detekt/detekt/releases
+detekt = "1.23.3"
+# https://mvnrepository.com/artifact/org.apache.xmlgraphics/batik-all
+batik = "1.17"
+# https://mvnrepository.com/artifact/com.twelvemonkeys.imageio/imageio-batik
+twelve-monkeys = "3.11.0"
+jna = "5.14.0"
+
+[libraries]
+kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
+cafe-adriel-voyager-voyager-navigator = { module = "cafe.adriel.voyager:voyager-navigator", version.ref = "voyager" }
+cafe-adriel-voyager-voyager-screenmodel = { module = "cafe.adriel.voyager:voyager-screenmodel", version.ref = "voyager" }
+cafe-adriel-voyager-voyager-transitions = { module = "cafe.adriel.voyager:voyager-transitions", version.ref = "voyager" }
+cafe-adriel-voyager-voyager-koin = { module = "cafe.adriel.voyager:voyager-koin", version.ref = "voyager" }
+cafe-adriel-voyager-voyager-tab-navigator = { module = "cafe.adriel.voyager:voyager-tab-navigator", version.ref = "voyager" }
+org-jetbrains-kotlinx-kotlinx-coroutines-swing = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-swing", version.ref = "kotlinxSwing" }
+io-coil-kt-coil3-coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil" }
+io-coil-kt-coil3-coil-svg = { module = "io.coil-kt.coil3:coil-svg", version.ref = "coil" }
+androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "androidx-room" }
+androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "androidx-room" }
+androidx-sqlite-sqlite-bundled = { module = "androidx.sqlite:sqlite-bundled", version.ref = "sqlite-bundled" }
+io-github-koalaplot-koalaplot-core = { module = "io.github.koalaplot:koalaplot-core", version.ref = "koalaplot" }
+io-insert-koin-koin-bom = { module = "io.insert-koin:koin-bom", version.ref = "koin" }
+io-insert-koin-koin-core = { module = "io.insert-koin:koin-core" }
+io-insert-koin-koin-core-coroutines = { module = "io.insert-koin:koin-core-coroutines" }
+androidx-datastore-datastore-preferences-core = { module = "androidx.datastore:datastore-preferences-core", version.ref = "datastore" }
+org-apache-tika-tika-core = { module = "org.apache.tika:tika-core", version.ref = "tika" }
+org-apache-tika-tika-parsers-standard-pckg = { module = "org.apache.tika:tika-parsers-standard-package", version.ref = "tika" }
+co-touchlab-kermit = { module = "co.touchlab:kermit", version.ref = "kermit" }
+org-jetbrains-kotlinx-kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
+org-jetbrains-kotlinx-kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref="kotlinx-datetime" }
+io-github-vinceglb-filekit-compose = { module = "io.github.vinceglb:filekit-compose", version.ref = "filekit" }
+window-styler = { module = "com.mayakapps.compose:window-styler", version.ref = "windowStyler" }
+org-apache-xmlgraphics-batik-all = { module ="org.apache.xmlgraphics:batik-all", version.ref = "batik" }
+com-twelvemonkeys-imageio-imageio-batik = { module = "com.twelvemonkeys.imageio:imageio-batik", version.ref = "twelve-monkeys" }
+net-java-dev-jna-jna-jpms = { module = "net.java.dev.jna:jna-jpms", version.ref = "jna" }
+net-java-dev-jna-jna-platform-jpms = { module = "net.java.dev.jna:jna-platform-jpms", version.ref = "jna" }
+
+[plugins]
+jetbrainsCompose = { id = "org.jetbrains.compose", version.ref = "compose-plugin" }
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+room = { id = "androidx.room", version.ref = "androidx-room" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+com-codingfeline-buildkonfig = { id = "com.codingfeline.buildkonfig", version.ref = "konfig" }
+serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+com-github-jk1-dependency-license-report = { id = "com.github.jk1.dependency-license-report", version.ref = "dependency-license-report" }
+detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }

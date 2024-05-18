@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Indexxo is file management software.
+  ~ Copyright (c) 2024 Elshan Agaev
+  ~
+  ~ This program is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with this program.  If not, see <https://www.gnu.org/licenses/>.
+  -->
+
+<resources>
+    <string name="app_name">Indexxo</string>
+
+    <!-- Common -->
+    <string name="add">Add</string>
+    <string name="archive">Archive</string>
+    <string name="audio">Audio</string>
+    <string name="cancel">Cancel</string>
+    <string name="confirm">Confirm</string>
+    <string name="create_new">Create new</string>
+    <string name="delete">Delete</string>
+    <string name="discard">Discard</string>
+    <string name="dismiss">Dismiss</string>
+    <string name="document">Document</string>
+    <string name="duplicate_file_names">Duplicate file names</string>
+    <string name="duplicate_folder_names">Duplicate folder names</string>
+    <string name="duplicate_hashes">Duplicate hashes</string>
+    <string name="edit">Edit</string>
+    <string name="empty_files">Empty files</string>
+    <string name="empty_folders">Empty folders</string>
+    <string name="error">Error</string>
+    <string name="excluded_tab">Excluded</string>
+    <string name="extension">Extension</string>
+    <string name="extensions">Extensions</string>
+    <string name="file_categories">Categories</string>
+    <string name="folder">Folder</string>
+    <string name="hash">Hash</string>
+    <string name="image">Image</string>
+    <string name="included_tab">Included</string>
+    <string name="loading">Loading…</string>
+    <string name="move_to_trash">Move to trash</string>
+    <string name="name">Name</string>
+    <string name="ok">Ok</string>
+    <string name="open">Open</string>
+    <string name="other">Other</string>
+    <string name="path">Path</string>
+    <string name="rename">Rename</string>
+    <string name="resume">Resume</string>
+    <string name="select">Select</string>
+    <string name="settings">Settings</string>
+    <string name="similar_images">Similar images</string>
+    <string name="similar_videos">Similar videos</string>
+    <string name="show_in_explorer">Show in explorer</string>
+    <string name="size">Size</string>
+    <string name="video">Video</string>
+
+    <!-- Setting dialog window -->
+    <string name="settings_dialog_theming_mode">Theming mode</string>
+    <string name="settings_dialog_theming_mode_support">Choose a theming mode</string>
+    <string name="settings_dialog_theming_mode_auto">Auto</string>
+    <string name="settings_dialog_theming_mode_light">Light</string>
+    <string name="settings_dialog_theming_mode_dark">Dark</string>
+    <string name="settings_dialog_third_party_licenses">Third party licenses</string>
+    <string name="settings_dialog_privacy_policy">Privacy policy</string>
+    <string name="settings_dialog_source_code">Source code</string>
+    <string name="settings_dialog_data_folder">Data folder</string>
+    <string name="settings_dialog_data_folder_support">Folder with your presets file and logs</string>
+    <string name="settings_dialog_app_version">App version</string>
+    <string name="settings_dialog_app_version_support">%1$s (codename: %2$s)</string>
+
+    <!-- User presets screen -->
+    <string name="user_presets_title">Select preset</string>
+    <string name="user_presets_footer">See FAQ to learn more about presets</string>
+    <string name="user_presets_delete_confirmation">Delete this preset?</string>
+
+    <!-- Settings screen -->
+    <string name="settings_directories">Directories</string>
+    <string name="settings_directories_included_placeholder">No included directories</string>
+    <string name="settings_directories_excluded_placeholder">No excluded directories</string>
+    <string name="settings_files">Files</string>
+    <string name="settings_files_included_placeholder">No included files</string>
+    <string name="settings_files_excluded_placeholder">No excluded files</string>
+    <string name="settings_extensions_included_placeholder">Will include all extensions except for excluded ones</string>
+    <string name="settings_extensions_excluded_placeholder">No excluded extensions</string>
+    <string name="settings_extensions_prefix">filename.</string>
+    <string name="settings_max_threads">Max threads</string>
+    <string name="settings_max_threads_support">More is better</string>
+    <string name="settings_resume_dialog_title">Resume previous session?</string>
+    <string name="settings_resume_dialog_body">Please be aware that previous session index may be outdated. Rescan to get latest index.</string>
+    <string name="settings_start">Start</string>
+    <string name="settings_analyzers">Analyzers</string>
+    <string name="settings_analyzers_support">Choose how your storage will be processed</string>
+
+    <!-- Similar images settings -->
+    <string name="similar_images_settings_match_colors">Match colors</string>
+    <string name="similar_images_settings_match_colors_support">Improve accuracy by matching color palettes. Enable if you have blurred images</string>
+    <string name="similar_images_settings_minimal_similarity">Minimal similarity</string>
+    <string name="similar_images_settings_minimal_similarity_support">Increase value to find only very close matches</string>
+    <string name="similar_images_settings_minimal_similarity_too_low">Are you sure?</string>
+    <string name="similar_images_settings_minimal_similarity_too_low_support">To get better results, turn on color matching and increase minimal similarity level</string>
+
+    <!-- Similar videos settings -->
+    <string name="similar_videos_settings_minimal_hash_similarity">Minimal frame similarity</string>
+    <string name="similar_videos_settings_minimal_hash_similarity_support">How much each frame should match to consider them similar</string>
+    <string name="similar_videos_settings_minimal_frames_similarity">Extra frames</string>
+    <string name="similar_videos_settings_minimal_frames_similarity_support">How many frames between videos should match. Decrease to disallow extra frames (higher chance to get exact match)</string>
+    <string name="similar_videos_settings_minimal_frame_rate">Frames per second</string>
+    <string name="similar_videos_settings_minimal_frame_rate_support">How many frames will be extracted from each second of a video. If value is higher than video frame rate it will use videos frame rate</string>
+
+    <!-- Loading screen -->
+    <string name="loader_cancel_indexing_title">Cancel indexing?</string>
+    <string name="stage_walking">Walking through directories</string>
+    <string name="stage_indexing">Indexing</string>
+    <string name="stage_duplicate_hashes_analyzing">Looking for duplicate hashes</string>
+    <string name="stage_duplicate_hashes_computing_full_hash">Computing full hashes for suspected duplicates</string>
+    <string name="stage_duplicate_names_analyzing">Looking for duplicate names</string>
+    <string name="stage_empty_files_analyzing">Looking for empty files</string>
+    <string name="stage_empty_folders_analyzing">Looking for empty folders</string>
+    <string name="stage_similar_images_comparing">Comparing similar images</string>
+    <string name="stage_similar_videos_comparing">Comparing similar videos</string>
+    <string name="stage_computing_hashes">Computing hashes</string>
+
+    <!-- Actions tab -->
+    <string name="actions_tab_title">Actions</string>
+    <string name="actions_tab_empty_actions">All issues have been resolved. Rescan to detect new possible actions</string>
+    <string name="rescan">Rescan</string>
+    <string name="actions_tab_duplicate_hashes_title">Resolve duplicate hashes</string>
+    <string name="actions_tab_duplicate_hashes_body">There are %1$s files with identical hashes</string>
+    <string name="actions_tab_duplicate_file_names_title">Resolve duplicate file names</string>
+    <string name="actions_tab_duplicate_file_names_body">There are %1$s files with identical names</string>
+    <string name="actions_tab_duplicate_folder_names_title">Resolve duplicate folder names</string>
+    <string name="actions_tab_duplicate_folder_names_body">There are %1$s folders with identical names</string>
+    <string name="actions_tab_empty_folders_title">Resolve empty folders</string>
+    <string name="actions_tab_empty_folders_body">There are %1$s empty folders</string>
+    <string name="actions_tab_empty_files_title">Resolve empty files</string>
+    <string name="actions_tab_empty_files_body">There are %1$s empty files</string>
+    <string name="actions_tab_similar_images_title">Resolve similar images</string>
+    <string name="actions_tab_similar_images_body">There are %1$s similar images</string>
+    <string name="actions_tab_similar_videos_title">Resolve similar videos</string>
+    <string name="actions_tab_similar_videos_body">There are %1$s similar videos</string>
+    <string name="actions_tab_resolve">Resolve</string>
+
+    <!-- Indexed object selector -->
+    <string name="indexed_object_selector_placeholder">No more items</string>
+    <string name="indexed_object_selector_discard_items">Discard items</string>
+    <string name="indexed_object_selector_discard_items_description">Files will remain untouched</string>
+
+    <!-- Move to trash dialog -->
+    <string name="move_to_trash_dialog_title">Move selected items to trash?</string>
+    <string name="move_to_trash_dialog_text">Files and folders will be moved to your system trash folder</string>
+    <string name="move_to_trash_in_progress">Moving to trash</string>
+    <string name="move_to_trash_refreshing_index">Refreshing index</string>
+
+    <!-- Analytics tab -->
+    <string name="analytics_tab_title">Analytics</string>
+    <string name="analytics_tab_largest_file">Largest file</string>
+
+    <!-- Compare tab -->
+    <string name="compare">Compare</string>
+
+    <!-- Date chart tab -->
+    <string name="date_chart_tab_title">Date chart</string>
+
+    <!-- Export tab -->
+    <string name="export_tab_title">Export</string>
+    <string name="export_tab_in_progress">Exporting</string>
+    <string name="export_tab_exported">Exported</string>
+    <string name="export_tab_exported_support">Saved to: %1$s</string>
+
+    <!-- Warnings tab -->
+    <string name="warnings_tab_title">Warnings</string>
+    <string name="warnings_tab_placeholder">There were no warnings during indexing and analyzing</string>
+    <string name="warnings_tab_stack_trace">Stack trace</string>
+
+    <!-- Search screen -->
+    <string name="search_file_type">File type</string>
+    <string name="search_text_field_placeholder">Search…</string>
+    <string name="search_empty_results">No results</string>
+    <string name="search_created">Created</string>
+    <string name="search_created_at">Created at</string>
+    <string name="search_created_between">Created between</string>
+    <string name="search_modified">Modified</string>
+    <string name="search_modified_at">Modified at</string>
+    <string name="search_modified_between">Modified between</string>
+    <string name="search_include_contents">Include contents</string>
+    <string name="search_date_range_selector_not_set">Not set</string>
+    <string name="search_date_range_selector_between">Between</string>
+    <string name="search_results">Results</string>
+</resources>

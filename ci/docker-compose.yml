@@ -1,0 +1,6 @@
+services:
+  amd64_ubuntu:
+    build: .
+    volumes:
+    - ../:/app
+    command: /bin/sh -c bash
