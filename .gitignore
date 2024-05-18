@@ -1,7 +1,6 @@
-# Default ignored files
-/shelf/
-/workspace.xml
 .idea
-.vscode
-.venv
-client
+build
+.gradle
+.kotlin
+indexxo.properties
+homework
