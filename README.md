@@ -5,7 +5,7 @@
 > [!NOTE]
 > Current stage: **Open Alpha**.
 >
-> Most likely will work your computer
+> Most likely will work on your computer
 
 # 💻 Download
 <p align="middle">
@@ -17,9 +17,8 @@
 
 > [!NOTE]
 > Currently releasing only for Windows
-> 
-> Linux is supported, but not tested (you can build it yourself)
-> macOS is partially supported (you can't build it)
+>
+> Linux is supported, but not tested (you can build it yourself). macOS is partially supported (you can't build it)
 
 # 😎 Features
 
