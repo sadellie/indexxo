@@ -10,7 +10,7 @@
 # 💻 Download
 <p align="middle">
     <a href="https://github.com/sadellie/indexxo/releases/latest"><img alt="Download" src="./content/github.svg" height="60"/></a>
-    <a href="https://sadellie.github.com/indexxo/demo/index.html"><img alt="Demo" src="./content/demo.svg" height="60"/></a>
+    <a href="https://sadellie.github.io/indexxo/demo/index.html"><img alt="Demo" src="./content/demo.svg" height="60"/></a>
 
 \* demo is a web app, no download required
 </p>
