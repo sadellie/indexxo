@@ -175,6 +175,7 @@ kotlin {
         else -> throw Error("Not supported: $osName")
       }
       implementation("org.bytedeco:javacv:1.5.10")
+      api("org.bytedeco:ffmpeg:6.1.1-1.5.10")
       implementation("org.bytedeco:ffmpeg:6.1.1-1.5.10:$bytedecoPlatform-gpl")
 
       implementation(libs.net.java.dev.jna.jna.jpms)

@@ -63,6 +63,7 @@ import io.github.vinceglb.filekit.core.FileKitPlatformSettings
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.mapLatest
+import org.bytedeco.ffmpeg.global.avutil
 import org.jetbrains.compose.resources.stringResource
 import org.koin.core.annotation.KoinExperimentalAPI
 import org.koin.core.context.startKoin
@@ -191,22 +192,7 @@ private fun SplashScreenWindow(onCloseRequest: () -> Unit) {
 
 private fun setupLogger() {
   // avutil is used in ffmpeg wrapper
-  try {
-    // Reflection due to conflicting with dependencies, no errors in runtime
-    val avutil = Class.forName("org.bytedeco.ffmpeg.global.avutil")
-    avutil
-      .getMethod("av_log_get_level")
-      .invoke(null) as Int
-
-    avutil
-      .getMethod("av_log_set_level", Int::class.java)
-      // AV_LOG_ERROR = 16
-      .invoke(null, 16)
-
-  } catch (t: Throwable) {
-    Logger.w(t) { "Failed to set avutil log level" }
-  }
-
+  avutil.av_log_set_level(avutil.AV_LOG_ERROR)
   Logger.d(TAG) { "Set minSeverity to ${AppConfig.logSeverity}" }
   Logger.setMinSeverity(AppConfig.logSeverity)
 
