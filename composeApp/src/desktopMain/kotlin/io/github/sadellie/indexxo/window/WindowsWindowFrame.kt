@@ -56,7 +56,6 @@ import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.boundsInWindow
 import androidx.compose.ui.layout.onGloballyPositioned
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.DialogWindowScope
 import androidx.compose.ui.window.FrameWindowScope
@@ -69,12 +68,18 @@ import com.sun.jna.platform.win32.User32
 import com.sun.jna.platform.win32.WinUser
 import indexxo.composeapp.generated.resources.Res
 import indexxo.composeapp.generated.resources.app_name
+import indexxo.composeapp.generated.resources.close
+import indexxo.composeapp.generated.resources.logo_light_color
+import indexxo.composeapp.generated.resources.maximize
+import indexxo.composeapp.generated.resources.minimize
+import indexxo.composeapp.generated.resources.restore
 import io.github.sadellie.indexxo.core.designsystem.icons.rounded.Settings
 import io.github.sadellie.indexxo.core.designsystem.icons.rounded.SymbolsRounded
 import io.github.sadellie.indexxo.core.designsystem.theme.Previewer
 import io.github.sadellie.indexxo.window.WinUserConst.HTCAPTION
 import io.github.sadellie.indexxo.window.WinUserConst.HTCLIENT
 import io.github.sadellie.indexxo.window.WinUserConst.HTMAXBUTTON
+import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
 @OptIn(ExperimentalLayoutApi::class)
@@ -189,7 +194,7 @@ private fun WindowsDialogWindowFrameToolbar(
 
       CompositionLocalProvider(LocalIndication provides CloseControlButtonIndication) {
         WindowControlWindowsButton(
-          painter = painterResource("icons/controls/close.svg"),
+          painter = painterResource(Res.drawable.close),
           onClick = onClose,
         )
       }
@@ -247,7 +252,7 @@ private fun WindowsWindowFrameToolbar(
         verticalAlignment = Alignment.CenterVertically,
       ) {
         WindowControlWindowsButton(
-          painter = painterResource("icons/controls/minimize.svg"),
+          painter = painterResource(Res.drawable.minimize),
           onClick = onMinimize,
         )
 
@@ -256,20 +261,20 @@ private fun WindowsWindowFrameToolbar(
         if (isMaximized) {
           WindowControlWindowsButton(
             modifier = positionReporterModifier,
-            painter = painterResource("icons/controls/restore.svg"),
+            painter = painterResource(Res.drawable.restore),
             onClick = onRestore,
           )
         } else {
           WindowControlWindowsButton(
             modifier = positionReporterModifier,
-            painter = painterResource("icons/controls/maximize.svg"),
+            painter = painterResource(Res.drawable.maximize),
             onClick = onMaximize,
           )
         }
 
         CompositionLocalProvider(LocalIndication provides CloseControlButtonIndication) {
           WindowControlWindowsButton(
-            painter = painterResource("icons/controls/close.svg"),
+            painter = painterResource(Res.drawable.close),
             onClick = onClose,
           )
         }
@@ -328,7 +333,7 @@ private val AdditionalButtonPadding = PaddingValues(0.dp, 4.dp)
 private fun PreviewWindowControls() = Previewer {
   Column {
     WindowsWindowFrameToolbar(
-      icon = painterResource("icons/logo_light_color.svg"),
+      icon = painterResource(Res.drawable.logo_light_color),
       title = stringResource(Res.string.app_name),
       onMinimize = {},
       onRestore = {},
@@ -343,7 +348,7 @@ private fun PreviewWindowControls() = Previewer {
     HorizontalDivider()
 
     WindowsWindowFrameToolbar(
-      icon = painterResource("icons/logo_light_color.svg"),
+      icon = painterResource(Res.drawable.logo_light_color),
       title = stringResource(Res.string.app_name),
       onMinimize = {},
       onRestore = {},
@@ -359,7 +364,7 @@ private fun PreviewWindowControls() = Previewer {
 
     WindowsDialogWindowFrameToolbar(
       modifier = Modifier,
-      icon = painterResource("icons/logo_light_color.svg"),
+      icon = painterResource(Res.drawable.logo_light_color),
       title = stringResource(Res.string.app_name),
       onClose = {},
     )

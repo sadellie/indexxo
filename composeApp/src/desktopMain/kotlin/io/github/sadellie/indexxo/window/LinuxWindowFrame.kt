@@ -48,7 +48,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.painter.Painter
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.DialogWindowScope
@@ -57,9 +56,14 @@ import androidx.compose.ui.window.WindowPlacement
 import androidx.compose.ui.window.WindowState
 import indexxo.composeapp.generated.resources.Res
 import indexxo.composeapp.generated.resources.app_name
+import indexxo.composeapp.generated.resources.close
+import indexxo.composeapp.generated.resources.maximize
+import indexxo.composeapp.generated.resources.minimize
+import indexxo.composeapp.generated.resources.restore
 import io.github.sadellie.indexxo.core.designsystem.icons.rounded.Settings
 import io.github.sadellie.indexxo.core.designsystem.icons.rounded.SymbolsRounded
 import io.github.sadellie.indexxo.core.designsystem.theme.Previewer
+import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
@@ -143,7 +147,7 @@ private fun LinuxDialogWindowFrameToolbar(
       ) {
         CompositionLocalProvider(LocalIndication provides CloseControlButtonIndication) {
           LinuxWindowControlButton(
-            painter = painterResource("icons/controls/close.svg"),
+            painter = painterResource(Res.drawable.close),
             onClick = onClose,
           )
         }
@@ -197,25 +201,25 @@ private fun LinuxWindowFrameToolbar(
         horizontalArrangement = Arrangement.spacedBy(8.dp),
       ) {
         LinuxWindowControlButton(
-          painter = painterResource("icons/controls/minimize.svg"),
+          painter = painterResource(Res.drawable.minimize),
           onClick = onMinimize,
         )
 
         if (isMaximized) {
           LinuxWindowControlButton(
-            painter = painterResource("icons/controls/restore.svg"),
+            painter = painterResource(Res.drawable.restore),
             onClick = onRestore,
           )
         } else {
           LinuxWindowControlButton(
-            painter = painterResource("icons/controls/maximize.svg"),
+            painter = painterResource(Res.drawable.maximize),
             onClick = onMaximize,
           )
         }
 
         CompositionLocalProvider(LocalIndication provides CloseControlButtonIndication) {
           LinuxWindowControlButton(
-            painter = painterResource("icons/controls/close.svg"),
+            painter = painterResource(Res.drawable.close),
             onClick = onClose,
           )
         }

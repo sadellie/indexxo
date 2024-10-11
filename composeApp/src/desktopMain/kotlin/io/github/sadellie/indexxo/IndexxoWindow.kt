@@ -23,7 +23,6 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.input.key.KeyEvent
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.window.DialogState
 import androidx.compose.ui.window.DialogWindow
 import androidx.compose.ui.window.DialogWindowScope
@@ -33,11 +32,15 @@ import androidx.compose.ui.window.WindowPlacement
 import androidx.compose.ui.window.WindowState
 import androidx.compose.ui.window.rememberDialogState
 import androidx.compose.ui.window.rememberWindowState
+import indexxo.composeapp.generated.resources.Res
+import indexxo.composeapp.generated.resources.logo_dark_color
+import indexxo.composeapp.generated.resources.logo_light_color
 import io.github.sadellie.indexxo.core.designsystem.theme.isDarkThemeEnabled
 import io.github.sadellie.indexxo.window.LinuxDialogWindowFrame
 import io.github.sadellie.indexxo.window.LinuxWindowFrame
 import io.github.sadellie.indexxo.window.WindowsDialogWindowFrame
 import io.github.sadellie.indexxo.window.WindowsWindowFrame
+import org.jetbrains.compose.resources.painterResource
 import java.awt.Dimension
 import java.awt.Window
 import javax.swing.JRootPane
@@ -60,9 +63,9 @@ fun IndexxoWindow(
 ) {
   val isDarkTheme = isDarkThemeEnabled()
   val icon = if (isDarkTheme) {
-    painterResource("icons/logo_dark_color.svg")
+    painterResource(Res.drawable.logo_dark_color)
   } else {
-    painterResource("icons/logo_light_color.svg")
+    painterResource(Res.drawable.logo_light_color)
   }
 
   when (DesktopPlatform.Current) {
