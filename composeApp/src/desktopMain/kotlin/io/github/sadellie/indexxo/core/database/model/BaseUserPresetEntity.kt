@@ -37,7 +37,7 @@ data class BaseUserPresetEntity(
   @ColumnInfo(name = "similarImagesMinSimilarity") val similarImageMinSimilarity: Float = 0.9f,
   @ColumnInfo(name = "isSimilarImagesImproveAccuracy") val isSimilarImagesImproveAccuracy: Boolean = true,
   @ColumnInfo(name = "isSimilarVideosEnabled") val isSimilarVideosEnabled: Boolean = true,
-  @ColumnInfo(name = "similarVideosMinimalHashSimilarity") val similarVideosMinimalHashSimilarity: Float = 0.8f,
-  @ColumnInfo(name = "similarVideosMinimalFrameSimilarity") val similarVideosMinimalFrameSimilarity: Float = 0.8f,
+  @ColumnInfo(name = "similarVideosMinimalHashSimilarity") val similarVideosMinimalHashSimilarity: Float = 0.7f,
+  @ColumnInfo(name = "similarVideosMinimalFrameSimilarity") val similarVideosMinimalFrameSimilarity: Float = 0.7f,
   @ColumnInfo(name = "similarVideosFPS") val similarVideosFPS: Int = 5,
 )

@@ -115,6 +115,7 @@ class IndexedObjectRepositoryImpl : IndexedObjectRepository {
         minHashSimilarity = userPreset.similarVideosMinimalHashSimilarity,
         minFrameSimilarity = userPreset.similarVideosMinimalFrameSimilarity,
         framePerSecond = userPreset.similarVideosFPS,
+        maxThreads = userPreset.maxThreads,
         callback = ::trySend,
       )
       similarVideos.update { duplicates }

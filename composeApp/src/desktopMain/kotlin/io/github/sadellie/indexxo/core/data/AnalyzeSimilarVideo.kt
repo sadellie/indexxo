@@ -28,7 +28,6 @@ import io.github.sadellie.indexxo.core.model.SimilarVideosComparing
 import io.github.sadellie.indexxo.core.model.cleanUp
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import org.bytedeco.javacv.FFmpegFrameGrabber
 import org.bytedeco.javacv.Java2DFrameConverter
 import pdqhashing.hasher.PDQHasher
 import pdqhashing.types.Hash256
@@ -39,6 +38,7 @@ suspend fun analyzeSimilarVideos(
   minHashSimilarity: Float,
   minFrameSimilarity: Float,
   framePerSecond: Int,
+  maxThreads: Int,
   callback: suspend (IndexingStage) -> Unit,
 ): List<SimilarIndexedObjectsGroup> = withContext(Dispatchers.Default) {
   Logger.d(TAG) { "Looking for similar videos" }
@@ -46,7 +46,7 @@ suspend fun analyzeSimilarVideos(
   val videos = indexedObjects
     .filter { it.fileCategory == FileCategory.VIDEO }
     .sortedBy { it.createdDate }
-  val descriptedVideos = describeVideos(videos, framePerSecond, callback)
+  val descriptedVideos = describeVideos(videos, framePerSecond, maxThreads, callback)
     .filterNotNull()
     .toMap()
 
@@ -82,14 +82,20 @@ suspend fun analyzeSimilarVideos(
 private suspend fun describeVideos(
   videos: List<IndexedObject>,
   framePerSecond: Int,
+  maxThreads: Int,
   callback: suspend (IndexingStage) -> Unit,
 ): List<Pair<IndexedObject, Set<Hash256>>?> {
   val converter = Java2DFrameConverter()
   val pdqHasher = PDQHasher()
   return videos.mapIndexed { index, video ->
     callback(ComputingHash(index.toFloat() / videos.size, video))
-    val frames = uniqueFrames(video, converter, pdqHasher, framePerSecond)
-      ?: return@mapIndexed null
+
+    val frames = try {
+      uniqueFrames(video, converter, pdqHasher, framePerSecond, maxThreads)
+    } catch (e: Exception) {
+      Logger.e(TAG, e) { "Failed to get unique frames" }
+      return@mapIndexed null
+    }
 
     video to frames
   }
@@ -145,42 +151,26 @@ internal suspend fun uniqueFrames(
   converter: Java2DFrameConverter,
   pdqHasher: PDQHasher,
   framePerSecond: Int,
-): Set<Hash256>? = withContext(Dispatchers.IO) {
+  maxThreads: Int,
+): Set<Hash256> = withContext(Dispatchers.IO) {
   val uniqueFrames = mutableListOf<HashesAndQuality>()
-  val grabber = FFmpegFrameGrabber(video.path.toFile())
-  grabber.start()
-  val lengthInSeconds = grabber.lengthInTime.toInt() / MICROSECONDS_IN_SECOND // from microseconds
-  val framesPerSecondToTake = framePerSecond.coerceAtMost(grabber.frameRate.toInt())
-
-  val framesToTake = (lengthInSeconds * framesPerSecondToTake).coerceIn(
-    1..grabber.lengthInVideoFrames,
-  )
-
-  for (second in 0 until framesToTake) {
-    val timeStamp = second * MICROSECONDS_IN_SECOND / framePerSecond
-    val image = try {
-      grabber.setTimestamp(timeStamp.toLong(), true)
-      val frame = grabber.grabImage()
-      converter.getBufferedImage(frame)
-    } catch (e: Exception) {
-      Logger.e(TAG, e) { "Failed to grab a frame at second $second from file ${video.path}" }
-      return@withContext null
-    }
-    val currentFrameHashes = pdqHasher.dihedralFromBufferedImage(image)
-
-    val lastFrameHashes = uniqueFrames.lastOrNull()
-    if (lastFrameHashes != null) {
-      // Pruning
-      // don't insert anything from frame if hash is too similar to last frame hash
-      if (areFrameHashesSimilar(currentFrameHashes, lastFrameHashes)) {
-        continue
+  FFMpegFrameGrabber2(video.path.toFile(), maxThreads).use { grabber ->
+    grabber.processFrames(framePerSecond.toDouble()) { frame ->
+      val image = converter.getBufferedImage(frame)
+      val currentFrameHashes = pdqHasher.dihedralFromBufferedImage(image)
+      val lastFrameHashes = uniqueFrames.lastOrNull()
+      if (lastFrameHashes != null) {
+        // Pruning
+        // don't insert anything from frame if hash is too similar to last frame hash
+        if (areFrameHashesSimilar(currentFrameHashes, lastFrameHashes)) {
+          return@processFrames
+        }
       }
-    }
 
-    uniqueFrames.add(currentFrameHashes)
+      uniqueFrames.add(currentFrameHashes)
+    }
   }
 
-  grabber.stop()
   return@withContext uniqueFrames
     .flatMap {
       setOf(
@@ -195,17 +185,16 @@ private fun areFrameHashesSimilar(
   hashA: HashesAndQuality,
   hashB: HashesAndQuality,
 ): Boolean {
-  if (hashA.hash.hammingDistance(hashB.hash) < PRUNING_THRESHOLD) return true
-  if (hashA.hashRotate90.hammingDistance(hashB.hash) < PRUNING_THRESHOLD) return true
-  if (hashA.hashRotate180.hammingDistance(hashB.hash) < PRUNING_THRESHOLD) return true
-  if (hashA.hashRotate270.hammingDistance(hashB.hash) < PRUNING_THRESHOLD) return true
-  if (hashA.hashFlipX.hammingDistance(hashB.hash) < PRUNING_THRESHOLD) return true
-  if (hashA.hashFlipY.hammingDistance(hashB.hash) < PRUNING_THRESHOLD) return true
-  if (hashA.hashFlipPlus1.hammingDistance(hashB.hash) < PRUNING_THRESHOLD) return true
-  if (hashA.hashFlipMinus1.hammingDistance(hashB.hash) < PRUNING_THRESHOLD) return true
+  if (hashA.hash.hammingDistance(hashB.hash) <= PRUNING_THRESHOLD) return true
+  if (hashA.hashRotate90.hammingDistance(hashB.hash) <= PRUNING_THRESHOLD) return true
+  if (hashA.hashRotate180.hammingDistance(hashB.hash) <= PRUNING_THRESHOLD) return true
+  if (hashA.hashRotate270.hammingDistance(hashB.hash) <= PRUNING_THRESHOLD) return true
+  if (hashA.hashFlipX.hammingDistance(hashB.hash) <= PRUNING_THRESHOLD) return true
+  if (hashA.hashFlipY.hammingDistance(hashB.hash) <= PRUNING_THRESHOLD) return true
+  if (hashA.hashFlipPlus1.hammingDistance(hashB.hash) <= PRUNING_THRESHOLD) return true
+  if (hashA.hashFlipMinus1.hammingDistance(hashB.hash) <= PRUNING_THRESHOLD) return true
   return false
 }
 
 private const val PRUNING_THRESHOLD = 2
-private const val MICROSECONDS_IN_SECOND = 1_000_000
 private const val TAG = "AnalyzeSimilarVideos"
